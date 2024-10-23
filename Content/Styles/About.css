@@ -1,0 +1,144 @@
+﻿/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #2c3e50;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.8em;
+    margin-top: 30px;
+    color: #16a085;
+    position: relative;
+}
+
+    h3::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 3px;
+        background-color: #16a085;
+        margin: 10px auto;
+    }
+
+/* Paragraphs */
+p {
+    text-align: justify;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Style for the Founders Section */
+.founders-row {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.founder {
+    text-align: center;
+    margin: 10px;
+    max-width: 220px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .founder:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .founder img {
+        width: 100%;
+        max-width: 150px;
+        height: auto;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .founder:hover img {
+        transform: scale(1.1);
+    }
+
+.founder-name {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Section Styling */
+section {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+    section:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+/* Button Styles */
+button {
+    background-color: #16a085;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+    button:hover {
+        background-color: #12876f;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .founders-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .founder {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+    border-top: 4px solid #444;
+}
+
+    .footer p {
+        margin: 0;
+        color:white;
+        font-size: 14px;
+        text-align: center;
+    }

@@ -1,0 +1,36 @@
+﻿.employee-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.employee-header, .employee-row {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.employee-header {
+    font-weight: bold;
+    background-color: #f4f4f4;
+}
+
+.employee-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.employee-row div, .employee-header div {
+    flex: 1;
+    padding: 5px;
+}
+
+    .employee-row div:last-child, .employee-header div:last-child {
+        flex: 2;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+.btn {
+    margin-right: 5px;
+}
+

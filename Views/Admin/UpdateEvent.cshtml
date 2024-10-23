@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EventManagement.Models.Event>
+
+@{
+    ViewBag.Title = "UpdateEvent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <link href="~/Content/Styles/admin/updateEvent.css" rel="stylesheet" />
+}
+<script type="text/javascript">
+    function preback() { window.history.forward(); } setTimeout("preback()", 0);
+    window.onunload = function () { null };
+</script>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" style="text-align: center">
+        <strong>@TempData["SuccessMessage"]</strong>
+    </div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" style="text-align: center">
+        <strong>@TempData["ErrorMessage"]</strong>
+    </div>
+}
+
+<h2>UpdateEvent</h2>
+<div class="event-list">
+    <div class="event-header">
+        <div>@Html.DisplayNameFor(model => model.EventName)</div>
+        <div>@Html.DisplayNameFor(model => model.DateOfEvent)</div>
+        <div>@Html.DisplayNameFor(model => model.Description)</div>
+        <div>@Html.DisplayNameFor(model => model.Subevent1)</div>
+        <div>@Html.DisplayNameFor(model => model.Subdesc1)</div>
+        <div>Action</div>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="event-row">
+            <div>@Html.DisplayFor(modelItem => item.EventName)</div>
+            <div>@Html.DisplayFor(modelItem => item.DateOfEvent)</div>
+            <div>@Html.DisplayFor(modelItem => item.Description)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subevent1)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subdesc1)</div>
+            <div>
+                @Html.ActionLink("Edit", "EditEvent", new { id = item.EventID }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Details", "DetailsEvent", new { id = item.EventID }, new { @class = "btn btn-success" })
+               @* @Html.ActionLink("Delete", "Delete", new { id = item.EventID }, new { @class = "btn btn-danger" })*@
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<EventManagement.Models.ContactUs>
+
+@{
+    ViewBag.Title = "ToContact";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <link href="~/Content/Styles/admin/ToContact.css" rel="stylesheet" />
+    <script src="~/Scripts/Javascript/PreventBack.js"></script>
+}
+
+<h2>Feedback</h2>
+
+<div class="contact-list">
+    <div class="contact-list-header">
+        <div>@Html.DisplayNameFor(model => model.ContactId)</div>
+        <div>@Html.DisplayNameFor(model => model.Name)</div>
+        <div>@Html.DisplayNameFor(model => model.Email)</div>
+        <div>@Html.DisplayNameFor(model => model.Subject)</div>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="contact-list-item">
+            <div>@Html.DisplayFor(modelItem => item.ContactId)</div>
+            <div>@Html.DisplayFor(modelItem => item.Name)</div>
+            <div>@Html.DisplayFor(modelItem => item.Email)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subject)</div>
+        </div>
+    }
+</div>
+

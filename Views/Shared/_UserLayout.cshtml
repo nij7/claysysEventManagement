@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Claysys</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Styles/admin/AdminLayout.css" rel="stylesheet" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("UserDashboard", "User")">
+                <img src="~/Content/images/claysys-logo.png" alt="Claysys Logo" />
+                Claysys Event Management
+            </a>
+
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+
+                @{try
+                    {
+                        if (User.Identity.Name != null)
+                        {
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        @Html.ActionLink("Home", "UserDashboard", "User", new { area = "" }, new { @class = "nav-link" })
+                                    </li>
+
+                                    <li class="nav-item">
+                                        @Html.ActionLink("Upcoming events", "UpcomingEvents", "User", new { area = "" }, new { @class = "nav-link" })
+                                    </li>
+                                    <li class="nav-item">
+                                        @Html.ActionLink("My response", "UserResponses", "User", new { area = "" }, new { @class = "nav-link" })
+                                    </li>
+                                    <li class="nav-item">
+                                        @Html.ActionLink("Change password", "ChangePasswordUser", "User", new { area = "" }, new { @class = "nav-link" })
+                                    </li>
+                                    <li class="nav-item">
+                                        @Html.ActionLink("My profile", "ProfileInfo", "User", new { area = "" }, new { @class = "nav-link" })
+                                    </li>
+
+                                </ul>
+
+                        }
+                    }
+                   catch
+                         {
+
+                         }
+                }
+
+                <form class="form-inline my-2 my-lg-0" action="@Url.Action("SignOut", "User")" method="post">
+                    @Html.AntiForgeryToken()
+                    <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Sign out</button>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year - ClaySys Technologies. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

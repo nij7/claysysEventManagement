@@ -1,0 +1,158 @@
+﻿@model EventManagement.Models.Signup
+
+@{
+    ViewBag.Title = "Sign up";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Styles/Signup.css" rel="stylesheet" />
+    @*<script src="~/Scripts/Javascript/Alert.js"></script>*@
+}
+
+
+<body>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" style="text-align: center">
+            <strong>@TempData["SuccessMessage"]</strong>
+        </div>
+    }
+    else if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" style="text-align: center">
+            <strong>@TempData["ErrorMessage"]</strong>
+        </div>
+    }
+
+    @using (Html.BeginForm(new { id = "form", name = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal form">
+            <div>
+                <Center><h4>Sign up</h4></Center>
+            </div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label" })
+                @{
+                    var minimumBirthdate = DateTime.Today.AddYears(-17);
+                }
+                @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control", @max = minimumBirthdate.ToString("yyyy-MM-dd") } })
+                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Gender, "Male") Male
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Gender, "Female") Female
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Gender, "Other") Other
+                    </label>
+                </div>
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "[0-9]+" } })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label" })
+                <select id="state" name="state" class="form-control" style="width: 300px;" required>
+                    <option value="" selected disabled>--Select a state--</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="tamilnadu">Tamil Nadu</option>
+                    <option value="goa">Goa</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label" })
+                <select id="city" name="city" class="form-control" style="width: 300px;" required>
+                    <option value="" selected disabled>--Select a city--</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-next">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Sign up" class="btn btn-success" />
+                </div>
+            </div>
+            <div class="form-signin">
+                Already Registered?
+                @Html.ActionLink("Sign in", "Login", "Home", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    }
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/JavaScript/SignUp.js"></script>
+}
+<script>
+
+        // Show alert dialog box for success or error messages
+        document.addEventListener("DOMContentLoaded", function () {
+            const successMessage = '@TempData["SuccessMessage"]';
+            const errorMessage = '@TempData["ErrorMessage"]';
+
+            if (successMessage) {
+                alert(successMessage);
+            } else if (errorMessage) {
+                alert(errorMessage);
+            }
+        });
+</script>
+}

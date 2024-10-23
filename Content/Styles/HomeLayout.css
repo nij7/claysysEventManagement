@@ -1,0 +1,51 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container.body-content {
+    flex: 1;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+    border-top: 4px solid #444;
+}
+
+    .footer p {
+        margin: 0;
+        font-size: 14px;
+        text-align:center;
+    }
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.navbar-brand img {
+    height: 40px;
+    width: auto;
+}
+
+/* Align navbar*/
+.navbar-nav {
+    margin-left: auto;
+}
+
+    .navbar-nav .nav-item {
+        margin-right: 10px; /*spacing between menu items */
+    }
+
+    .navbar-nav .nav-link {
+        color: #fff;
+    }
+

@@ -1,0 +1,42 @@
+﻿.event-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.event-header, .event-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.event-header {
+    font-weight: bold;
+    background-color: #f8f8f8;
+}
+
+.event-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.event-header > div, .event-row > div {
+    flex: 1;
+    text-align: center;
+}
+
+    .event-header > div:nth-child(6), .event-row > div:nth-child(6) {
+        flex: 0.5;
+    }
+
+.event-row .btn {
+    margin: 0 5px;
+}
+
+.alert {
+    margin: 20px 0;
+}
+
+h2 {
+    margin-bottom: 20px;
+}

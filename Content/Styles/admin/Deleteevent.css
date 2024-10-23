@@ -1,0 +1,72 @@
+﻿.events-container {
+	display: flex;
+	flex-direction: column;
+	margin: 20px 0;
+}
+
+.event-header, .event-row {
+	display: grid;
+	grid-template-columns: repeat(14, 1fr);
+	align-items: center;
+	padding: 10px 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.event-header {
+	font-weight: bold;
+	background-color: #f8f8f8;
+}
+
+.event-row:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+.event-header > div, .event-row > div {
+	text-align: center;
+}
+
+.event-row .btn {
+	margin: 0 5px;
+}
+
+.alert {
+	margin: 20px 0;
+}
+
+h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* Styles for Delete page */
+.event-details {
+	margin: 20px 0;
+}
+
+.event-info {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+	.event-info > div {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 0;
+		border-bottom: 1px solid #ccc;
+	}
+
+	.event-info .label {
+		font-weight: bold;
+	}
+
+.form-actions {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+	.form-actions .btn {
+		margin: 0 10px;
+	}

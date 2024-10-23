@@ -1,0 +1,29 @@
+﻿.form-horizontal .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-horizontal .control-label {
+    flex: 0 0 20%;
+    max-width: 20%;
+    padding-right: 10px;
+    text-align: right;
+}
+
+.form-horizontal .col-md-10 {
+    flex: 1;
+}
+
+.form-horizontal .form-control {
+    width: 100%;
+}
+
+.form-horizontal .btn-success {
+    margin-left: 20%;
+}
+
+/* Specific styles for larger text areas */
+.form-horizontal .form-control.description-box {
+    height: 150px;
+}

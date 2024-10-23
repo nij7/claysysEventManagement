@@ -1,0 +1,44 @@
+﻿.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-horizontal {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+    .form-group label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-group .form-control {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .form-group .text-danger {
+        color: red;
+        margin-top: 5px;
+    }
+
+    .form-group .btn {
+        align-self: flex-start;
+    }
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 20px;
+}
+

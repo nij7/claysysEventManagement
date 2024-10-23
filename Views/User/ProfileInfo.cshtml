@@ -1,0 +1,68 @@
+﻿@model EventManagement.Models.Signup
+
+@{
+    ViewBag.Title = "ProfileInfo";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    <link href="~/Content/Styles/user/profileinfo.css" rel="stylesheet" />
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" style="text-align: center">
+        <strong>@TempData["SuccessMessage"]</strong>
+    </div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" style="text-align: center">
+        <strong>@TempData["ErrorMessage"]</strong>
+    </div>
+}
+
+<h2>ProfileInfo</h2>
+
+<div class="profile-container">
+    <div class="profile-item">
+        <span class="profile-title">@Html.DisplayNameFor(model => model.FirstName)</span>
+        <span class="profile-content">@Html.DisplayFor(model => model.FirstName)</span>
+    </div>
+    <div class="profile-item">
+        <span class="profile-title">@Html.DisplayNameFor(model => model.LastName)</span>
+        <span class="profile-content">@Html.DisplayFor(model => model.LastName)</span>
+    </div>
+    <div class="profile-item">
+        <span class="profile-title">@Html.DisplayNameFor(model => model.DateOfBirth)</span>
+        <span class="profile-content">@Html.DisplayFor(model => model.DateOfBirth)</span>
+    </div>
+    <div class="profile-item">
+        <span class="profile-title">@Html.DisplayNameFor(model => model.Gender)</span>
+        <span class="profile-content">@Html.DisplayFor(model => model.Gender)</span>
+    </div>
+    <div class="profile-item">
+        <span class="profile-title">@Html.DisplayNameFor(model => model.PhoneNumber)</span>
+        <span class="profile-content">@Html.DisplayFor(model => model.PhoneNumber)</span>
+    </div>
+    <div class="profile-item">
+        <span class="profile-title">@Html.DisplayNameFor(model => model.EmailAddress)</span>
+        <span class="profile-content">@Html.DisplayFor(model => model.EmailAddress)</span>
+    </div>
+    <div class="profile-item">
+        <span class="profile-title">@Html.DisplayNameFor(model => model.Address)</span>
+        <span class="profile-content">@Html.DisplayFor(model => model.Address)</span>
+    </div>
+    <div class="profile-item">
+        <span class="profile-title">@Html.DisplayNameFor(model => model.State)</span>
+        <span class="profile-content">@Html.DisplayFor(model => model.State)</span>
+    </div>
+    <div class="profile-item">
+        <span class="profile-title">@Html.DisplayNameFor(model => model.City)</span>
+        <span class="profile-content">@Html.DisplayFor(model => model.City)</span>
+    </div>
+    <div class="profile-item">
+        <span class="profile-title">@Html.DisplayNameFor(model => model.Username)</span>
+        <span class="profile-content">@Html.DisplayFor(model => model.Username)</span>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "EditProfile", null, new { @class = "btn btn-success" })
+</p>

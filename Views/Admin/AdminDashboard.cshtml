@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Admin Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <link href="~/Content/Styles/user/userdashboard.css" rel="stylesheet" />
+    <script src="~/Scripts/Javascript/PreventBack.js"></script>
+}
+
+
+<h2>Welcome, @Session["Username"]</h2>
+<!-- Add your image and content here -->
+<div class="content-section">
+    <img src="~/Content/images/claysys4.jpg" alt="Company Image" class="company-image" />
+    <div class="content">
+        <h3>Why Work for ClaySys?</h3>
+        <p>What really excites you? Sharpening your skills and passion for advanced technology development? Driving the future of cognitive technology applications for high-end customers? Working with smart people in a fun, collaborative, and vibrant atmosphere? Great! Come join us!</p>
+    </div>
+</div>
+
+<!-- Add buttons -->
+<div class="button-group">
+    <a href="@Url.Action("AddEvent", "Admin")" class="btn btn-primary">Add events</a>
+    <a href="@Url.Action("UserResponses", "Admin")" class="btn btn-secondary">Employee responses</a>
+    <a href="@Url.Action("EmployeeList", "Admin")" class="btn btn-success">Employee List</a>
+</div>
+
+

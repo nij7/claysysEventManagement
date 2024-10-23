@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "User Dashboard";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    <link href="~/Content/Styles/user/userdashboard.css" rel="stylesheet" />
+    <script src="~/Scripts/Javascript/PreventBack.js"></script>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" style="text-align: center">
+        <strong>@TempData["SuccessMessage"]</strong>
+    </div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" style="text-align: center">
+        <strong>@TempData["ErrorMessage"]</strong>
+    </div>
+}
+
+<h2>Welcome, @Session["Username"]</h2>
+
+
+<!-- Add your image and content here -->
+<div class="content-section">
+    <img src="~/Content/images/claysys3.jpg" alt="Company Image" class="company-image" />
+    <div class="content">
+        <h3>Culture and Work Environment</h3>
+        <p>The culture at ClaySys is very focused on channeling all our collective energy into delivering high-impact customer solutions. Our policies and procedures align with strictly avoiding traditional organizational politics, and instead aligning our team's interests with the best interests of our clients. To achieve this we have invested in creating an excellent work environment that ensures a great work-life balance. With a core focus on R&D and innovation, we channel our employee's passion into specific emerging technology opportunities like RPA, AI, and ML. We focus on investing in employee incentives and benefits that ensure long-term careers with ClaySys.</p>
+    </div>
+</div>
+
+<!-- Add buttons -->
+<div class="button-group">
+    <a href="@Url.Action("UpcomingEvents", "User")" class="btn btn-primary">Upcoming events</a>
+    <a href="@Url.Action("UserResponses", "User")" class="btn btn-secondary">My responses</a>
+    <a href="@Url.Action("ProfileInfo", "User")" class="btn btn-success">My profile</a>
+</div>

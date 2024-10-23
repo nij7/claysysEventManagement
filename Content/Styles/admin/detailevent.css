@@ -1,0 +1,55 @@
+﻿.event-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.event-header, .event-row {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.event-header {
+    font-weight: bold;
+    background-color: #f4f4f4;
+}
+
+.event-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.event-header div, .event-row div {
+    display: table-cell;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+    .event-header div:last-child, .event-row div:last-child {
+        width: 200px; /* Adjust the width as necessary */
+    }
+
+    .event-row div:last-child {
+        text-align: left;
+    }
+
+.btn {
+    margin-right: 5px;
+    margin-bottom: 5px; /* Optional: Add space between buttons if they wrap to the next line */
+}
+
+@media (max-width: 768px) {
+    .event-header div, .event-row div {
+        display: block;
+        width: 100%;
+    }
+
+        .event-header div:last-child, .event-row div:last-child {
+            width: 100%;
+        }
+
+    .btn {
+        margin-bottom: 10px;
+    }
+}

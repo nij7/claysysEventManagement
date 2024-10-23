@@ -1,0 +1,71 @@
+﻿@model EventManagement.Models.Event
+
+@{
+    ViewBag.Title = "DetailsEvent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <link href="~/Content/Styles/admin/Deleteevent.css" rel="stylesheet" />
+}
+
+
+<div class="details-container">
+    <h4>DetailsEvent</h4>
+    <hr />
+    <div class="details-list">
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.EventName)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.EventName)</div>
+        </div>
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.DateOfEvent)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.DateOfEvent)</div>
+        </div>
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.Description)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.Description)</div>
+        </div>
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.Subevent1)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.Subevent1)</div>
+        </div>
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.Subdesc1)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.Subdesc1)</div>
+        </div>
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.Subevent2)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.Subevent2)</div>
+        </div>
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.Subdesc2)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.Subdesc2)</div>
+        </div>
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.Subevent3)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.Subevent3)</div>
+        </div>
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.Subdesc3)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.Subdesc3)</div>
+        </div>
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.Subevent4)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.Subevent4)</div>
+        </div>
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.Subdesc4)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.Subdesc4)</div>
+        </div>
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.Subevent5)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.Subevent5)</div>
+        </div>
+        <div class="details-row">
+            <div class="details-label">@Html.DisplayNameFor(model => model.Subdesc5)</div>
+            <div class="details-value">@Html.DisplayFor(model => model.Subdesc5)</div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditEvent", new { id = Model.EventID }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("List of event", "UpdateEvent", null, new { @class = "btn btn-secondary" })
+</p>

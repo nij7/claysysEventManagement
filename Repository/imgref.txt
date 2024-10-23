@@ -1,0 +1,576 @@
+﻿@model EventManagement.Models.Signup
+
+@{
+    ViewBag.Title = "Sign up";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Styles/Signup.css" rel="stylesheet" />
+    @*<script src="~/Scripts/Javascript/Alert.js"></script>*@
+}
+
+
+<body>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" style="text-align: center">
+            <strong>@TempData["SuccessMessage"]</strong>
+        </div>
+    }
+    else if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" style="text-align: center">
+            <strong>@TempData["ErrorMessage"]</strong>
+        </div>
+    }
+
+    @using (Html.BeginForm(new { id = "form", name = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal form">
+            <div>
+                <Center><h4>Sign up</h4></Center>
+            </div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label" })
+                @{
+                    var minimumBirthdate = DateTime.Today.AddYears(-17);
+                }
+                @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control", @max = minimumBirthdate.ToString("yyyy-MM-dd") } })
+                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Gender, "Male") Male
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Gender, "Female") Female
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Gender, "Other") Other
+                    </label>
+                </div>
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = "[0-9]+" } })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label" })
+                <select id="state" name="state" class="form-control" style="width: 300px;" required>
+                    <option value="" selected disabled>--Select a state--</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="tamilnadu">Tamil Nadu</option>
+                    <option value="goa">Goa</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label" })
+                <select id="city" name="city" class="form-control" style="width: 300px;" required>
+                    <option value="" selected disabled>--Select a city--</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-next">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Sign up" class="btn btn-success" />
+                </div>
+            </div>
+            <div class="form-signin">
+                Already Registered?
+                @Html.ActionLink("Sign in", "Login", "Home", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    }
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/JavaScript/SignUp.js"></script>
+}
+<script>
+
+        // Show alert dialog box for success or error messages
+        document.addEventListener("DOMContentLoaded", function () {
+            const successMessage = '@TempData["SuccessMessage"]';
+            const errorMessage = '@TempData["ErrorMessage"]';
+
+            if (successMessage) {
+                alert(successMessage);
+            } else if (errorMessage) {
+                alert(errorMessage);
+            }
+        });
+</script>
+}
+
+///
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.Linq;
+using System.Web;
+
+namespace EventManagement.Models
+{
+    public class Signup
+    {
+        [Key]
+        public int UserID { get; set; }
+        [Required]
+        [RegularExpression(@"^[A-Za-z]+$",ErrorMessage ="First name contains only letters.")]              
+        [DisplayName("First name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [RegularExpression(@"^[A-Za-z]+$", ErrorMessage = "Last name contains only letters.")]
+        [DisplayName("Last name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [DisplayName("Date of birth")]
+        [DataType(DataType.Date)]
+        public string DateOfBirth { get; set; }
+
+
+        [Required]
+        [DisplayName("Gender")]
+
+        public string Gender { get; set; }
+
+        [Required]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be 10 numbers.")]
+        [DisplayName("Phone number")]
+        [DataType(DataType.PhoneNumber)]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [DisplayName("E-mail")]
+        [DataType(DataType.EmailAddress)]
+        public string EmailAddress { get; set; }
+
+        [Required]
+        [DisplayName("Address")]
+        [DataType(DataType.MultilineText)]
+        public string Address { get; set; }
+
+
+
+        [Required]
+        [DisplayName("State")]
+        public string State { get; set; }
+
+        [Required]
+        [DisplayName("City")]
+        public string City { get; set; }
+
+        [Required]
+        [DisplayName("Username")]
+        public string Username { get; set; }
+
+        [Required]
+        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{8,}$",
+        ErrorMessage = "Error!!.. example='Qwerty@24'")]
+        [DisplayName("Password")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Required]
+        [DisplayName("Confirm password")]
+        [DataType(DataType.Password)]
+        [Compare("Password",ErrorMessage ="Passwords not matching")]
+        public string ConfirmPassword { get; set; }
+    }
+}
+    document.getElementById("state").addEventListener("change", function () {
+        updateCityDropdown();
+        });
+
+    function updateCityDropdown() {
+            const stateDropdown = document.getElementById("state");
+    const cityDropdown = document.getElementById("city");
+    const selectedState = stateDropdown.value;
+
+    const cities = {
+        kerala: ["Thiruvananthapuram", "Kochi", "Kozhikode"],
+    tamilnadu: ["Chennai", "Coimbatore", "Madurai"],
+    goa: ["Panaji", "Margao", "Vasco da Gama"]
+            };
+
+    cityDropdown.innerHTML = "<option value='' selected disabled>--Select a city--</option>";
+
+    if (selectedState in cities) {
+                for (const city of cities[selectedState]) {
+                    const option = document.createElement("option");
+    option.value = city.toLowerCase().replace(/\s+/g, "");
+    option.textContent = city;
+    cityDropdown.appendChild(option);
+                }
+            }
+        }
+
+        $(document).ready(function () {
+
+    // Initialize Datepicker and disable future dates
+    var today = new Date().toISOString().split('T')[0];
+    $('#DateOfBirth').attr('max', today);
+
+    // Age Calculation based on Date of Birth
+    $('#DateOfBirth').change(function () {
+        var dob = new Date($('#DateOfBirth').val());
+        var today = new Date();
+        var age = today.getFullYear() - dob.getFullYear();
+        var m = today.getMonth() - dob.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+            age--;
+        }
+        $('#Age').val(age);
+    });
+
+    // Dynamic City Selection based on State
+    $('#State').change(function () {
+        var state = $('#State').val();
+        var cities = [];
+
+        switch (state) {
+            case 'Kerala':
+                cities = ['Trivandrum', 'Kochi', 'Kozhikode'];
+                break;
+            case 'Tamilnadu':
+                cities = ['Chennai', 'Coimbatore', 'Madurai'];
+                break;
+            case 'Uttar Pradesh':
+                cities = ['Lucknow', 'Kanpur', 'Agra'];
+                break;
+            case 'Karnataka':
+                cities = ['Bangalore', 'Mysore', 'Hubli'];
+                break;
+            default:
+                cities = ['Select City'];
+                break;
+        }
+
+        var options = '<option value="">Select City</option>';
+        for (var i = 0; i < cities.length; i++) {
+            options += '<option value="' + cities[i] + '">' + cities[i] + '</option>';
+        }
+
+        $('#City').html(options);
+    });
+
+    // Trigger change event on State dropdown on page load (if default value is set)
+    $('#State').change();
+
+    // Function to validate email format
+    function validateEmail(email) {
+        var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
+
+    // Form validation
+    $('#signup-form').submit(function (e) {
+        var isValid = true;
+        $('.error-message').remove();
+
+        // First Name validation
+        var firstName = $('#FirstName').val();
+        if (!firstName) {
+            isValid = false;
+            $('#FirstName').after('<span class="error-message" style="color: red;">First name is required.</span>');
+        } else if (!/^[A-Za-z]+$/.test(firstName)) {
+            isValid = false;
+            $('#FirstName').after('<span class="error-message" style="color: red;">First name must contain only letters.</span>');
+        }
+
+        // Last Name validation
+        var lastName = $('#LastName').val();
+        if (!lastName) {
+            isValid = false;
+            $('#LastName').after('<span class="error-message" style="color: red;">Last name is required.</span>');
+        } else if (!/^[A-Za-z]+$/.test(lastName)) {
+            isValid = false;
+            $('#LastName').after('<span class="error-message" style="color: red;">Last name must contain only letters.</span>');
+        }
+
+        // Birth Date validation
+        var dob = $('#DateOfBirth').val();
+        if (!dob) {
+            isValid = false;
+            $('#DateOfBirth').after('<span class="error-message" style="color: red;">Birth date is required.</span>');
+        }
+
+        // Age validation
+        var age = $('#Age').val();
+        if (!age) {
+            isValid = false;
+            $('#Age').after('<span class="error-message" style="color: red;">Age is required.</span>');
+        }
+
+        // Gender validation
+        var gender = $('input[name="Gender"]:checked').val();
+        if (!gender) {
+            isValid = false;
+            $('.gender-options').after('<span class="error-message" style="color: red;">Gender is required.</span>');
+        }
+
+
+        // Phone Number validation
+        var phoneNumber = $('#PhoneNumber').val(); 
+        if (!phoneNumber) {
+            isValid = false;
+            $('#PhoneNumber').after('<span class="error-message" style="color: red;">Phone number is required.</span>');
+        } else if (!/^\d{10}$/.test(phoneNumber)) {
+            isValid = false;
+            $('#PhoneNumber').after('<span class="error-message" style="color: red;">Phone number must be exactly 10 digits long.</span>');
+        }
+
+        // Email Address validation
+        var emailAddress = $('#EmailAddress').val(); 
+        if (!emailAddress) {
+            isValid = false;
+            $('#EmailAddress').after('<span class="error-message" style="color: red;">Email address is required.</span>');
+        } else if (!validateEmail(emailAddress)) {
+            isValid = false;
+            $('#EmailAddress').after('<span class="error-message" style="color: red;">Email address is not valid.</span>');
+        } else {
+            // Check if email is unique
+            $.ajax({
+                url: '@Url.Action("CheckEmail", "Validation")', // ASP.NET MVC helper to generate URL
+                type: 'POST',
+                data: { email: emailAddress },
+                success: function (response) {
+                    if (!response.isUnique) {
+                        isValid = false;
+                        $('#EmailAddress').after('<span class="error-message" style="color: red;">Email address already exists. Please enter a unique email.</span>');
+                    }
+                },
+                async: false 
+            });
+        }
+
+        // Address validation
+        var address = $('#Address').val();
+        if (!address) {
+            isValid = false;
+            $('#Address').after('<span class="error-message" style="color: red;">Address is required.</span>');
+        }
+
+        // State validation
+        var state = $('#State').val();
+        if (!state) {
+            isValid = false;
+            $('#State').after('<span class="error-message" style="color: red;">State is required.</span>');
+        }
+
+        // City validation
+        var city = $('#City').val();
+        if (!city) {
+            isValid = false;
+            $('#City').after('<span class="error-message" style="color: red;">City is required.</span>');
+        }
+
+        // Username validation (must be an email)
+        var username = $('#Username').val();
+        if (!username) {
+            isValid = false;
+            $('#Username').after('<span class="error-message" style="color: red;">Username is required.</span>');
+        } else if (!validateEmail(username)) {
+            isValid = false;
+            $('#Username').after('<span class="error-message" style="color: red;">Username must be a valid email address.</span>');
+        } else {
+            // Check if username is unique
+            $.ajax({
+                url: '@Url.Action("CheckUsername", "Validation")', // ASP.NET MVC helper to generate URL
+                type: 'POST',
+                data: { username: username },
+                success: function (response) {
+                    if (!response.isUnique) {
+                        isValid = false;
+                        $('#Username').after('<span class="error-message" style="color: red;">Username already exists. Please enter a unique username.</span>');
+                    }
+                },
+                async: false // Make synchronous to ensure proper validation before submission
+            });
+        }
+
+        // Password validation
+        var password = $('#Password').val();
+        if (!password) {
+            isValid = false;
+            $('#Password').after('<span class="error-message" style="color: red;">Password is required.</span>');
+        } else if (password.length < 6) {
+            isValid = false;
+            $('#Password').after('<span class="error-message" style="color: red;">Password must be at least 6 characters long.</span>');
+        }
+
+        // Confirm Password validation
+        var confirmPassword = $('#ConfirmPassword').val();
+        if (password !== confirmPassword) {
+            isValid = false;
+            $('#ConfirmPassword').after('<span class="error-message" style="color: red;">Passwords do not match.</span>');
+        }
+
+        if (!isValid) {
+            e.preventDefault();
+        }
+    });
+
+});
+
+@model SkyAirwaysBookingSystem.Models.RegisterDB
+@{
+    var message = TempData["Message"] as string;
+}
+<link href="~/Content/Css/Signup.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+
+<div class="content">
+    <h1>Sign up</h1>
+    @using (Html.BeginForm("SignUp", "Account", FormMethod.Post, new { id = "signup-form", @class = "signup-form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.Label("First name")
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Enter your first name" })
+            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "error-message" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Last name")
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Enter your last name" })
+            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "error-message" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Birth date")
+            @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", type = "date", id = "DateOfBirth", placeholder = "Select your birth date" })
+            @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "error-message" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Age")
+            @Html.TextBoxFor(m => m.Age, new { @class = "form-control", @readonly = "readonly", id = "Age" })
+            @Html.ValidationMessageFor(m => m.Age, "", new { @class = "error-message" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Gender")
+            <div class="gender-options">
+                @Html.RadioButtonFor(m => m.Gender, "Male", new { id = "Male" })
+                <label for="Male">Male</label>
+                @Html.RadioButtonFor(m => m.Gender, "Female", new { id = "Female" })
+                <label for="Female">Female</label>
+                @Html.RadioButtonFor(m => m.Gender, "Other", new { id = "Other" })
+                <label for="Other">Other</label>
+                @Html.ValidationMessageFor(m => m.Gender)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Phone number")
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Enter your phone number", type = "tel", maxlength = "10", pattern = "[0-9]{10}" })
+            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "error-message" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Email address")
+            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", placeholder = "Enter your email address" })
+            @Html.ValidationMessageFor(m => m.EmailAddress)
+        </div>
+        <div class="form-group">
+            @Html.Label("Address")
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Enter your address" })
+            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "error-message" })
+        </div>
+        <div class="form-group">
+            @Html.Label("State")
+            @Html.DropDownListFor(m => m.State, new SelectList(new[]
+            {
+                new SelectListItem { Text = "Kerala", Value = "Kerala" },
+                new SelectListItem { Text = "Tamilnadu", Value = "Tamilnadu" },
+                new SelectListItem { Text = "Uttar Pradesh", Value = "Uttar Pradesh" },
+                new SelectListItem { Text = "Karnataka", Value = "Karnataka" }
+            }, "Value", "Text"), "Select State", new { @class = "form-control", id = "State" })
+            @Html.ValidationMessageFor(m => m.State, "", new { @class = "error-message" })
+        </div>
+        <div class="form-group">
+            @Html.Label("City")
+            @Html.DropDownListFor(m => m.City, Enumerable.Empty<SelectListItem>(), "Select City", new { @class = "form-control", id = "City" })
+            @Html.ValidationMessageFor(m => m.City, "", new { @class = "error-message" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Username")
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Enter your username" })
+            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "error-message" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Password")
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter your password" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "error-message" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Confirm password")
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm your password" })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "error-message" })
+        </div>
+        <div class="button">
+            <input type="submit" value="Sign up" class="btn btn-primary" />
+        </div>
+        <p class="signin-link">Already have an account? @Html.ActionLink("Sign in", "Signin", "Account", new { area = "" }, new { @class = "underline-link" })</p>
+    }  
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="~/Content/Pictutres/Signup.js"></script>

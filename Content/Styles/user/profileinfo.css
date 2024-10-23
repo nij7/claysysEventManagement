@@ -1,0 +1,27 @@
+﻿.profile-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.profile-item {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.profile-title {
+    flex: 1 1 30%;
+    font-weight: bold;
+}
+
+.profile-content {
+    flex: 1 1 70%;
+    word-wrap: break-word;
+}
+
+.btn {
+    margin-top: 20px;
+}

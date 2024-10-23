@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EventManagement.Models.Signup>
+
+@{
+    ViewBag.Title = "EmployeeList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <link href="~/Content/Styles/admin/EmployeeList.css" rel="stylesheet" />
+}
+<script type="text/javascript">
+    function preback() { window.history.forward(); } setTimeout("preback()", 0);
+    window.onunload = function () { null };
+</script>
+
+<h2>Employee list</h2>
+<div class="employee-list">
+    <div class="employee-header">
+        <div>@Html.DisplayNameFor(model => model.FirstName)</div>
+        <div>@Html.DisplayNameFor(model => model.LastName)</div>
+        <div>@Html.DisplayNameFor(model => model.Username)</div>
+        <div>@Html.DisplayNameFor(model => model.PhoneNumber)</div>
+        <div>@Html.DisplayNameFor(model => model.EmailAddress)</div>
+        
+        <div>Action</div>
+    </div>
+
+    @for (int i = 2; i < Model.Count(); i++)
+    {
+        var item = Model.ElementAt(i);
+        <div class="employee-row">
+            <div>@Html.DisplayFor(modelItem => item.FirstName)</div>
+            <div>@Html.DisplayFor(modelItem => item.LastName)</div>
+            <div>@Html.DisplayFor(modelItem => item.Username)</div>
+            <div>@Html.DisplayFor(modelItem => item.PhoneNumber)</div>
+            <div>@Html.DisplayFor(modelItem => item.EmailAddress)</div>
+            
+            <div>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.UserID }, new { @class = "btn btn-primary" }) &nbsp;&nbsp;*@
+                @Html.ActionLink("Details", "Details", new { id = item.UserID }, new { @class = "btn btn-success" })
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,56 @@
+﻿@model EventManagement.Models.Signup
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <link href="~/Content/Styles/admin/Details.css" rel="stylesheet" />
+}
+
+<h2>Details</h2>
+
+<div class="details-container">
+    <div class="detail-item">
+        <span class="detail-title">@Html.DisplayNameFor(model => model.FirstName)</span>
+        <span class="detail-content">@Html.DisplayFor(model => model.FirstName)</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-title">@Html.DisplayNameFor(model => model.LastName)</span>
+        <span class="detail-content">@Html.DisplayFor(model => model.LastName)</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-title">@Html.DisplayNameFor(model => model.DateOfBirth)</span>
+        <span class="detail-content">@Html.DisplayFor(model => model.DateOfBirth)</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-title">@Html.DisplayNameFor(model => model.Gender)</span>
+        <span class="detail-content">@Html.DisplayFor(model => model.Gender)</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-title">@Html.DisplayNameFor(model => model.PhoneNumber)</span>
+        <span class="detail-content">@Html.DisplayFor(model => model.PhoneNumber)</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-title">@Html.DisplayNameFor(model => model.EmailAddress)</span>
+        <span class="detail-content">@Html.DisplayFor(model => model.EmailAddress)</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-title">@Html.DisplayNameFor(model => model.Address)</span>
+        <span class="detail-content">@Html.DisplayFor(model => model.Address)</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-title">@Html.DisplayNameFor(model => model.State)</span>
+        <span class="detail-content">@Html.DisplayFor(model => model.State)</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-title">@Html.DisplayNameFor(model => model.City)</span>
+        <span class="detail-content">@Html.DisplayFor(model => model.City)</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-title">@Html.DisplayNameFor(model => model.Username)</span>
+        <span class="detail-content">@Html.DisplayFor(model => model.Username)</span>
+    </div>
+    
+</div>
+<p>
+    @Html.ActionLink("Back to Employee list", "EmployeeList", "", new { @class = "btn btn-primary" })
+</p>

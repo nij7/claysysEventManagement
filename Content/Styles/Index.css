@@ -1,0 +1,61 @@
+﻿/* Body styling */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Headings */
+h1, h2 {
+    color: #222;
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Paragraphs */
+p {
+    text-align: justify;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Content Image */
+.content-image {
+    height: 400px;
+    width: 800px;
+    display: block;
+    margin: 20px auto; /* Centers the image horizontally */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section */
+section.row {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+    /* Add subtle hover effect to the section */
+    section.row:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Adding spacing between paragraphs and headings */
+    section.row h2 {
+        margin-top: 20px;
+    }
+
+    section.row p {
+        margin-top: 20px;
+    }
+
+

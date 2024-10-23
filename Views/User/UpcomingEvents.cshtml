@@ -1,0 +1,61 @@
+﻿@model IEnumerable<EventManagement.Models.Event>
+
+@{
+    ViewBag.Title = "UpcomingEvents";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" style="text-align: center">
+        <strong>@TempData["SuccessMessage"]</strong>
+    </div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" style="text-align: center">
+        <strong>@TempData["ErrorMessage"]</strong>
+    </div>
+}
+
+<center><h2>UpcomingEvents</h2></center>
+
+
+
+    @foreach (var item in Model)
+    {
+        <div class="event-row">
+            
+            <div><h3>@Html.DisplayFor(modelItem => item.EventName)</h3></div>
+            <div>@Html.DisplayNameFor(model => model.DateOfEvent)</div>
+            <div>@Html.DisplayFor(modelItem => item.DateOfEvent)</div>
+            <div>@Html.DisplayNameFor(model => model.Description)</div>
+            <div>@Html.DisplayFor(modelItem => item.Description)</div>
+            <div>@Html.DisplayNameFor(model => model.Subevent1)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subevent1)</div>
+            <div>@Html.DisplayNameFor(model => model.Subdesc1)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subdesc1)</div>
+            <div>@Html.DisplayNameFor(model => model.Subevent2)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subevent2)</div>
+            <div>@Html.DisplayNameFor(model => model.Subdesc2)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subdesc2)</div>
+            <div>@Html.DisplayNameFor(model => model.Subevent3)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subevent3)</div>
+            <div>@Html.DisplayNameFor(model => model.Subdesc3)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subdesc3)</div>
+            <div>@Html.DisplayNameFor(model => model.Subevent4)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subevent4)</div>
+            <div>@Html.DisplayNameFor(model => model.Subdesc4)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subdesc4)</div>
+            <div>@Html.DisplayNameFor(model => model.Subevent5)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subevent5)</div>
+
+            <div>@Html.DisplayNameFor(model => model.Subdesc5)</div>
+            <div>@Html.DisplayFor(modelItem => item.Subdesc5)</div>
+            <div>
+                
+                @Html.ActionLink("EventResponse", "EventResponse", new { eventId = item.EventID }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    }
+

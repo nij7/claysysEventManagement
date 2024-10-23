@@ -1,0 +1,92 @@
+﻿@model EventManagement.Models.Event
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" style="text-align: center">
+        <strong>@TempData["SuccessMessage"]</strong>
+    </div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" style="text-align: center">
+        <strong>@TempData["ErrorMessage"]</strong>
+    </div>
+}
+
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="event-details">
+    <h4>Event</h4>
+    <hr />
+    <div class="event-info">
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.EventName)</span>
+            <span class="value">@Html.DisplayFor(model => model.EventName)</span>
+        </div>
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.DateOfEvent)</span>
+            <span class="value">@Html.DisplayFor(model => model.DateOfEvent)</span>
+        </div>
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.Description)</span>
+            <span class="value">@Html.DisplayFor(model => model.Description)</span>
+        </div>
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.Subevent1)</span>
+            <span class="value">@Html.DisplayFor(model => model.Subevent1)</span>
+        </div>
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.Subdesc1)</span>
+            <span class="value">@Html.DisplayFor(model => model.Subdesc1)</span>
+        </div>
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.Subevent2)</span>
+            <span class="value">@Html.DisplayFor(model => model.Subevent2)</span>
+        </div>
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.Subdesc2)</span>
+            <span class="value">@Html.DisplayFor(model => model.Subdesc2)</span>
+        </div>
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.Subevent3)</span>
+            <span class="value">@Html.DisplayFor(model => model.Subevent3)</span>
+        </div>
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.Subdesc3)</span>
+            <span class="value">@Html.DisplayFor(model => model.Subdesc3)</span>
+        </div>
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.Subevent4)</span>
+            <span class="value">@Html.DisplayFor(model => model.Subevent4)</span>
+        </div>
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.Subdesc4)</span>
+            <span class="value">@Html.DisplayFor(model => model.Subdesc4)</span>
+        </div>
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.Subevent5)</span>
+            <span class="value">@Html.DisplayFor(model => model.Subevent5)</span>
+        </div>
+        <div>
+            <span class="label">@Html.DisplayNameFor(model => model.Subdesc5)</span>
+            <span class="value">@Html.DisplayFor(model => model.Subdesc5)</span>
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="DeleteConfirmation" class="btn btn-danger" /> |
+            @Html.ActionLink("Event List", "UpdateEvent", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

@@ -1,0 +1,20 @@
+﻿@model EventManagement.Models.EmployeeResponse
+
+@{
+    ViewBag.Title = "Event Response";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Event Response</h2>
+
+@using (Html.BeginForm("EventResponse", "User", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.EventID, new { Value = ViewBag.EventID })
+
+    <div class="form-group">
+        <label>Event ID:</label>
+        @Html.DisplayFor(model => model.EventID)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+}

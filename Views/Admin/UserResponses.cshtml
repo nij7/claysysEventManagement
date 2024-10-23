@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EventManagement.Models.EmployeeResponse>
+
+@{
+    ViewBag.Title = "User Responses";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <link href="~/Content/Styles/admin/userresponse.css" rel="stylesheet" />
+}
+
+<h2>User Responses</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" style="text-align: center">
+        <strong>@TempData["SuccessMessage"]</strong>
+    </div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" style="text-align: center">
+        <strong>@TempData["ErrorMessage"]</strong>
+    </div>
+}
+
+<div class="responses-container">
+    <div class="responses-header">
+        <div>Response ID</div>
+        <div>Event Name</div>
+        <div>Username</div>
+        <div>Status</div>
+        <div>Actions</div>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="responses-row">
+            <div>@item.ResponseID</div>
+            <div>@item.EventName</div>
+            <div>@item.Username</div>
+            <div>@item.Status</div>
+            <div>
+                @if (item.Status == "Pending")
+                {
+                    using (Html.BeginForm("ApproveResponse", "Admin", FormMethod.Post))
+                    {
+                        @Html.Hidden("responseId", item.ResponseID)
+                        <button type="submit" class="btn btn-success">Approve</button>
+                    }
+                    using (Html.BeginForm("RejectResponse", "Admin", FormMethod.Post))
+                    {
+                        @Html.Hidden("responseId", item.ResponseID)
+                        <button type="submit" class="btn btn-danger">Reject</button>
+                    }
+                }
+                else
+                {
+                    <span class="text-success">@item.Status</span>
+                }
+            </div>
+        </div>
+    }
+</div>

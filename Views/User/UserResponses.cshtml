@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EventManagement.Models.EmployeeResponse>
+
+@{
+    ViewBag.Title = "My Event Responses";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    <script src="~/Scripts/Javascript/PreventBack.js"></script>
+}
+
+<h2>My Event Responses</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" style="text-align: center">
+        <strong>@TempData["SuccessMessage"]</strong>
+    </div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" style="text-align: center">
+        <strong>@TempData["ErrorMessage"]</strong>
+    </div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Event Name</th> <!-- Updated -->
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EventName</td> <!-- Updated -->
+                <td>@item.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
